@@ -3,7 +3,7 @@ classdef TestCarsftSmoke < matlab.unittest.TestCase
     % These don't assume any specific function names.
 
     properties (Constant)
-        CarsftDir = fullfile(pwd, 'src', 'carsft');
+        CarsftDir = fullfile(localRepoRoot(), 'src', 'carsft');
     end
 
     methods (Test)
@@ -86,4 +86,26 @@ function tf = localIsFunctionFile(fpath)
         tf = startsWith(L, 'function');
         return
     end
+end
+
+function root = localRepoRoot()
+% Find the repository root robustly in CI and locally.
+    % 1) Try walking up from this test file to find a folder that has src/ and tests/
+    here = fileparts(mfilename('fullpath'));
+    d = here;
+    for i = 1:10   % don't walk forever
+        if isfolder(fullfile(d,'src')) && isfolder(fullfile(d,'tests'))
+            root = d; return
+        end
+        parent = fileparts(d);
+        if strcmp(parent, d), break; end
+        d = parent;
+    end
+    % 2) GitHub Actions workspace, if present
+    ws = getenv('GITHUB_WORKSPACE');
+    if ~isempty(ws) && isfolder(ws)
+        root = ws; return
+    end
+    % 3) Fallback: current directory
+    root = pwd;
 end
