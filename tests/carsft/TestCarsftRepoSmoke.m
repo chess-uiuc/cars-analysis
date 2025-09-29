@@ -1,4 +1,4 @@
-classdef TestCarsftSmoke < matlab.unittest.TestCase
+classdef TestCarsftRepoSmoke < matlab.unittest.TestCase
     % Minimal, structure-safe smoke tests for CARSFT.
     % These don't assume any specific function names.
 
