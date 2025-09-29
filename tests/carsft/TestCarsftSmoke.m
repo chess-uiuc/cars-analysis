@@ -2,7 +2,7 @@ classdef TestCarsftSmoke < matlab.unittest.TestCase
     % Minimal, structure-safe smoke tests for CARSFT.
     % These don't assume any specific function names.
 
-    properties (Constant)
+    properties (Access = private)
       CarsftDir % instead now set below 
     end
     methods (TestClassSetup)
