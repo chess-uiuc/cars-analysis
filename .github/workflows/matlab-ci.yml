@@ -23,7 +23,9 @@ jobs:
         with:
           # Tell CI where code and tests live (recursive)
           source-folder: src
-          select-by-folder: tests
+          select-by-folder: |
+            tests/seed
+            tests/carsft
           # Optional: publish coverage artifact
           code-coverage-cobertura: cobertura.xml
 

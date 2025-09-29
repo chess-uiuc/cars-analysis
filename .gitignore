@@ -6,6 +6,7 @@
 *.mltbx
 *.slxc
 *.mat
+*~
 
 # OS/editor
 .DS_Store
