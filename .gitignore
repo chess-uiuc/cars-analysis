@@ -1,0 +1,21 @@
+# MATLAB artifacts
+*.asv
+*.m~*
+*.autosave
+*.mex*
+*.mltbx
+*.slxc
+*.mat
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Build/coverage/logs
+coverage/
+cobertura.xml
+reports/

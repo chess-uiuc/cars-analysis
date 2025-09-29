@@ -1,0 +1,35 @@
+name: MATLAB CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    # Run on Linux; you can add macOS/windows later via a matrix.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up MATLAB
+        # Uses MathWorks’ official action; 'latest' is fine to start.
+        uses: matlab-actions/setup-matlab@v2
+
+      - name: Run MATLAB tests
+        uses: matlab-actions/run-tests@v2
+        with:
+          # Tell CI where code and tests live (recursive)
+          source-folder: src
+          select-by-folder: tests
+          # Optional: publish coverage artifact
+          code-coverage-cobertura: cobertura.xml
+
+      - name: Upload coverage (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: matlab-cobertura
+          path: cobertura.xml
