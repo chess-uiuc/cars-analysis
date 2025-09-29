@@ -17,8 +17,8 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
     methods (Test)
         function e2e_runs_and_has_structure(test)
             wexp  = linspace(200, 4000, 100);
-            T     = 500;  P = 0.1;  X = [1 0 0 0];
-            dtp   = 2.0;  dtau3 = 1.0;  alpha = 0.05;  dwp = 1.0;
+            T     = 300;  P = 1.0;  X = [1 0 0 0];
+            dtp   = 0.5;  dtau3 = 0.1;  alpha = 0.05;  dwp = 0.5;
 
             [S, chi, w] = CARSFT_dev(wexp, T, P, X, dtp, dtau3, alpha, dwp);
 
