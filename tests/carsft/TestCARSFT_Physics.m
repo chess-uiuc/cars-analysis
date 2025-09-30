@@ -22,7 +22,7 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
             % dwp = 1, alpha = 0;
             % N2 and CO vibrational spectra near sample surface in air plasma w/usec laser pulses
             wexp  = [2050:0.1:2350];
-            T     = 3000;  P = 0.2;  X = [1 0.5];
+            T     = 3000;  P = 0.2;  X = [1 0.5 0 0];
             dtp   = 8000;  dtau3 = 0.0;  alpha = 0.0;  dwp = 1.0;
             [S, chi, w] = CARSFT_dev(wexp, T, P, X, dtp, dtau3, alpha, dwp);
 
