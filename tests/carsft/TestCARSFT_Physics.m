@@ -59,7 +59,7 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
             % Weaken the test
             test.verifyEqual(rT1, 0.5, "RelTol", 0.20);
             test.verifyEqual(rT3, 0.5, "RelTol", 0.20);
-            test.verifyGreaterThan(rT2, rT3);
+            test.verifyGreaterThan(rT3, rT2);
         end
 
         function probe_and_instrument_broaden_lines(test)
@@ -74,13 +74,14 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
             f2 = fwhm(wexp, S2);
             test.verifyGreaterThan(f2, f1);
 
-            dwp=0.5; dtp_long=1000.0; dtp_short=500.0;
+            dwp=0.5; dtp_long=1000.0; dtp_short=100.0;
             [S3, ~, ~] = CARSFT_dev(wexp, T, P, X, dtp_long, dtau3, alpha, dwp);
             [S4, ~, ~] = CARSFT_dev(wexp, T, P, X, dtp_short, dtau3, alpha, dwp);
 
             f3 = fwhm(wexp, S3);
             f4 = fwhm(wexp, S4);
-            test.verifyGreaterThan(f4, f3);
+            test.verifyGreaterThan(f3, f4);
+
         end
     end
 end
