@@ -16,11 +16,6 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
 
     methods (Test)
         function e2e_runs_and_has_structure(test)
-            % Pure rotational spectrum for air at T=1000K in 1atm furnace w/fsec pump 5ps probe
-            % wexp = [0:0.1:300]
-            % T = 1000, P = 1, X = [0.79 0 0 0 0.21], dtp = 5, dtau = anything from 0 to 50.
-            % dwp = 1, alpha = 0;
-            % N2 and CO vibrational spectra near sample surface in air plasma w/usec laser pulses
             wexp  = [2050:0.1:2350];
             T     = 3000;  P = 0.2;  X = [1 0.5 0 0];
             dtp   = 8000;  dtau3 = 0.0;  alpha = 0.0;  dwp = 1.0;
