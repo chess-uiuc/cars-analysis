@@ -16,10 +16,14 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
 
     methods (Test)
         function e2e_runs_and_has_structure(test)
-             wexp  = [2050:0.1:2350];
-            T     = 300;  P = 1.0;  X = [1 0 0 0];
-            dtp   = 0.5;  dtau3 = 0.1;  alpha = 0.05;  dwp = 0.5;
-
+            % Pure rotational spectrum for air at T=1000K in 1atm furnace w/fsec pump 5ps probe
+            % wexp = [0:0.1:300]
+            % T = 1000, P = 1, X = [0.79 0 0 0 0.21], dtp = 5, dtau = anything from 0 to 50.
+            % dwp = 1, alpha = 0;
+            % N2 and CO vibrational spectra near sample surface in air plasma w/usec laser pulses
+            wexp  = [2050:0.1:2350];
+            T     = 3000;  P = 0.2;  X = [1 0.5];
+            dtp   = 8000;  dtau3 = 0.0;  alpha = 0.0;  dwp = 1.0;
             [S, chi, w] = CARSFT_dev(wexp, T, P, X, dtp, dtau3, alpha, dwp);
 
             test.verifySize(S, size(wexp));
@@ -31,9 +35,9 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
         end
 
         function chi_scales_with_pressure_over_temperature(test)
-            wexp  = linspace(200, 4000, 4001);
+            wexp  = [2050:0.1:2350];
             X     = [1 0 0 0];
-            dtp   = 0.2; dtau3 = 0.0; alpha = 0.0; dwp = 0.0;
+            dtp   = 1000; dtau3 = 0.0; alpha = 0.0; dwp = 1.0;
 
             T1=300; P1=1.0; [~, chi1, ~] = CARSFT_dev(wexp, T1, P1, X, dtp, dtau3, alpha, dwp);
             T2=300; P2=2.0; [~, chi2, ~] = CARSFT_dev(wexp, T2, P2, X, dtp, dtau3, alpha, dwp);
@@ -46,10 +50,10 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
         end
 
         function probe_and_instrument_broaden_lines(test)
-            wexp  = linspace(2200, 2400, 4001);
+            wexp  = [2200:0.1:2400];
             T=300; P=1.0; X=[1 0 0 0]; dtau3=0.0; alpha=0.0;
 
-            dtp=2.0; dwp1=0.0; dwp2=0.8;
+            dtp=1000.0; dwp1=.5; dwp2=1.0;
             [S1, ~, ~] = CARSFT_dev(wexp, T, P, X, dtp, dtau3, alpha, dwp1);
             [S2, ~, ~] = CARSFT_dev(wexp, T, P, X, dtp, dtau3, alpha, dwp2);
 
@@ -57,7 +61,7 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
             f2 = fwhm(wexp, S2);
             test.verifyGreaterThan(f2, f1);
 
-            dwp=0.0; dtp_long=2.0; dtp_short=0.2;
+            dwp=0.5; dtp_long=1000.0; dtp_short=500.0;
             [S3, ~, ~] = CARSFT_dev(wexp, T, P, X, dtp_long, dtau3, alpha, dwp);
             [S4, ~, ~] = CARSFT_dev(wexp, T, P, X, dtp_short, dtau3, alpha, dwp);
 
