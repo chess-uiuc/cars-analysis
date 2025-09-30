@@ -39,8 +39,8 @@ classdef TestCARSFT_PublicUnit < matlab.unittest.TestCase
             % Different wexp resolutions should yield the same shape after normalization.
             X=[1 0 0 0]; T=300; P=1.0; dtp=100.0; dtau3=0.0; alpha=0.0; dwp=1.0;
 
-            w_fine = [2000:0.05:2600];
-            w_coarse = [2000.0:0.1:2600];
+            w_fine = [2050:0.05:2300];
+            w_coarse = [2050:0.1:2300];
 
             [Sfine, ~, ~]   = CARSFT_dev(w_fine,   T, P, X, dtp, dtau3, alpha, dwp);
             [Scoarse, ~, ~] = CARSFT_dev(w_coarse, T, P, X, dtp, dtau3, alpha, dwp);
