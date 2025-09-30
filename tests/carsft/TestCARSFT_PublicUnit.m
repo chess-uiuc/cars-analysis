@@ -48,6 +48,16 @@ classdef TestCARSFT_PublicUnit < matlab.unittest.TestCase
             % Compare on the fine grid by interpolating the coarse result
             Scoarse_up = interp1(w_coarse, Scoarse, w_fine, 'linear', 'extrap');
 
+            fprintf('Sfine:   min=%g max=%g mean=%g NaN? %d Inf? %d\n', ...
+                min(Sfine), max(Sfine), mean(Sfine), any(isnan(Sfine)), any(isinf(Sfine)));
+
+            fprintf('Scoarse: min=%g max=%g mean=%g NaN? %d Inf? %d\n', ...
+                min(Scoarse), max(Scoarse), mean(Scoarse), any(isnan(Scoarse)), any(isinf(Scoarse)));
+
+            fprintf('Scoarse_up: min=%g max=%g mean=%g NaN? %d Inf? %d\n', ...
+                min(Scoarse_up), max(Scoarse_up), mean(Scoarse_up), ...
+                any(isnan(Scoarse_up)), any(isinf(Scoarse_up)));
+
             % Both are normalized; allow small interp error
             rel = norm(Sfine - Scoarse_up) / max(1, norm(Sfine));
             test.verifyLessThan(rel, 0.02);  % 2% tolerance
