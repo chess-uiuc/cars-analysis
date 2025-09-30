@@ -40,8 +40,8 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
             dtp   = 1000; dtau3 = 0.0; alpha = 0.0; dwp = 1.0;
 
             T1=300; P1=0.5; [~, chi1, ~] = CARSFT_dev(wexp, T1, P1, X, dtp, dtau3, alpha, dwp);
-            P2=1.0; [~, chi2, ~] = CARSFT_dev(wexp, T2, P2, X, dtp, dtau3, alpha, dwp);
-            P3=2.0; [~, chi3, ~] = CARSFT_dev(wexp, T3, P3, X, dtp, dtau3, alpha, dwp);
+            T1=300; P2=1.0; [~, chi2, ~] = CARSFT_dev(wexp, T1, P2, X, dtp, dtau3, alpha, dwp);
+            T1=300; P3=2.0; [~, chi3, ~] = CARSFT_dev(wexp, T1, P3, X, dtp, dtau3, alpha, dwp);
             r1 = max(abs(chi2)) / max(abs(chi1));
             r2 = max(abs(chi3)) / max(abs(chi1));
             r3 = max(abs(chi3)) / max(abs(chi2));
@@ -50,10 +50,10 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
             test.verifyGreaterThan(r2, r1);
             test.verifyGreaterThan(r2, r3);
 
-            T2=600; [~, chi4, ~] = CARSFT_dev(wexp, T2, P2, X, dtp, dtau3, alpha, dwp);
-            T3=1200; [~, chi5, ~] = CARSFT_dev(wexp, T2, P2, X, dtp, dtau3, alpha, dwp);
-            rT1 = max(abs(chi4)) / max(abs(chi1));
-            rT2 = max(abs(chi5)) / max(abs(chi1));
+            T2=600; P2=1.0; [~, chi4, ~] = CARSFT_dev(wexp, T2, P2, X, dtp, dtau3, alpha, dwp);
+            T3=1200; P2=1.0; [~, chi5, ~] = CARSFT_dev(wexp, T3, P2, X, dtp, dtau3, alpha, dwp);
+            rT1 = max(abs(chi4)) / max(abs(chi2));
+            rT2 = max(abs(chi5)) / max(abs(chi2));
             rT3 = max(abs(chi5)) / max(abs(chi4));
             % test.verifyEqual(rT, 0.5, "RelTol", 0.10);
             % Weaken the test
