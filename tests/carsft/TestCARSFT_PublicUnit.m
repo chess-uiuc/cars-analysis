@@ -51,8 +51,14 @@ classdef TestCARSFT_PublicUnit < matlab.unittest.TestCase
             fprintf('Sfine:   min=%g max=%g mean=%g NaN? %d Inf? %d\n', ...
                 min(Sfine), max(Sfine), mean(Sfine), any(isnan(Sfine)), any(isinf(Sfine)));
 
+            idx = find(isnan(Sfine));
+            fprintf('NaNs in Sfine at indices: %s\n', mat2str(idx));
+
             fprintf('Scoarse: min=%g max=%g mean=%g NaN? %d Inf? %d\n', ...
                 min(Scoarse), max(Scoarse), mean(Scoarse), any(isnan(Scoarse)), any(isinf(Scoarse)));
+
+            idx = find(isnan(Scoarse));
+            fprintf('NaNs in Scoarse at indices: %s\n', mat2str(idx));
 
             fprintf('Scoarse_up: min=%g max=%g mean=%g NaN? %d Inf? %d\n', ...
                 min(Scoarse_up), max(Scoarse_up), mean(Scoarse_up), ...
