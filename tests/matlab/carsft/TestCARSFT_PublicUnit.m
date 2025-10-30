@@ -15,7 +15,7 @@ classdef TestCARSFT_PublicUnit < matlab.unittest.TestCase
 
             % 2) Resolve repo root and add src/carsft
             repoRoot     = localRepoRoot();
-            tc.CarsftDir = fullfile(repoRoot, 'src', 'carsft');
+            tc.CarsftDir = fullfile(repoRoot, 'src', 'matlab', 'carsft');
             addpath(genpath(tc.CarsftDir));
         end
     end

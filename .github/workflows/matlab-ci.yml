@@ -22,8 +22,8 @@ jobs:
         uses: matlab-actions/run-tests@v2
         with:
           # Tell CI where code and tests live (recursive)
-          source-folder: src
-          select-by-folder: tests
+          source-folder: src/matlab
+          select-by-folder: tests/matlab
           # Optional: publish coverage artifact
           code-coverage-cobertura: cobertura.xml
 

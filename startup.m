@@ -1,1 +1,2 @@
-addpath(genpath(fullfile(pwd, 'src')));
+addpath(genpath(fullfile(pwd, 'src/matlab')));
+addpath(genpath(fullfile(pwd, 'tests/matlab')));
