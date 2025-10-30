@@ -1,7 +1,7 @@
 # CARS Analysis Tools
 
-[![MATLAB CI](https://github.com/MTCam/chess-cars-analysis/actions/workflows/matlab-ci.yml/badge.svg)](https://github.com/MTCam/chess-cars-analysis/actions/workflows/matlab-ci.yml)
-[![CO2 Dual Pump CI](https://github.com/MTCam/chess-cars-analysis/actions/workflows/co2-ci.yml/badge.svg)](https://github.com/MTCam/chess-cars-analysis/actions/workflows/co2-ci.yml)
+[![MATLAB CI](https://github.com/chess-uiuc/cars-analysis/actions/workflows/matlab-ci.yml/badge.svg)](https://github.com/chess-uiuc/cars-analysis/actions/workflows/matlab-ci.yml)
+[![CO2 Dual Pump CI](https://github.com/chess-uiuc/cars-analysis/actions/workflows/co2-ci.yml/badge.svg)](https://github.com/chess-uiuc/cars-analysis/actions/workflows/co2-ci.yml)
 
 MATLAB & Fortran analysis tooling for cars data.
 
