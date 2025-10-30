@@ -14,7 +14,7 @@ classdef TestCarsftRepoSmoke < matlab.unittest.TestCase
 
             % 2) Resolve repo root using the centralized helper
             repoRoot     = localRepoRoot();
-            tc.CarsftDir = fullfile(repoRoot, 'src', 'carsft');
+            tc.CarsftDir = fullfile(repoRoot, 'src', 'matlab', 'carsft');
 
             % 3) Put src/carsft on the MATLAB path for the tests
             addpath(genpath(tc.CarsftDir));

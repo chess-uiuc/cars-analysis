@@ -10,7 +10,7 @@ classdef TestCARSFT_Physics < matlab.unittest.TestCase
 
              % 2. Add the carsft source directory from the repo root
              repoRoot = localRepoRoot();
-             addpath(genpath(fullfile(repoRoot, 'src', 'carsft')));
+             addpath(genpath(fullfile(repoRoot, 'src', 'matlab', 'carsft')));
            end
     end
 
