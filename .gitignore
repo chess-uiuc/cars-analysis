@@ -20,3 +20,7 @@ Thumbs.db
 coverage/
 cobertura.xml
 reports/
+
+# Fortran build output
+src/fortran/*/build/
+src/fortran/*/bin/_smoke_run/
