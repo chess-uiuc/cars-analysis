@@ -1,0 +1,69 @@
+# .github/workflows/co2-ci.yml
+name: CO2 Dual Pump CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-smoke:
+    name: ${{ matrix.os }} smoke
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            shell: bash
+          - os: macos-14    # Apple Silicon (arm64)
+            shell: bash
+
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Toolchain install per-OS
+      - name: Install toolchain (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran make
+
+      - name: Install toolchain (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install gcc make
+          # gfortran is provided by Homebrew gcc (e.g., gfortran-14); ensure a "gfortran" shim
+          GFOR=$(command -v gfortran || true)
+          if [[ -z "$GFOR" ]]; then
+            GF=$(ls -1 /opt/homebrew/bin/gfortran-* /usr/local/bin/gfortran-* 2>/dev/null | head -n1 || true)
+            if [[ -n "$GF" ]]; then
+              sudo ln -sf "$GF" /usr/local/bin/gfortran
+            fi
+          fi
+          gfortran --version || (echo "gfortran not found" && exit 1)
+
+      - name: Build
+        working-directory: src/fortran/co2_2pump
+        run: make -j
+
+      - name: Ensure smoke script is executable
+        run: chmod +x tests/fortran/co2_2pump/smoke/run_smoke.sh
+
+      - name: Smoke test
+        working-directory: tests/fortran/co2_2pump/smoke
+        run: ./run_smoke.sh
+
+      - name: Upload smoke artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: co2_2pump-${{ matrix.os }}-smoke
+          path: |
+            src/fortran/co2_2pump/bin/_smoke_run/stdout.log
+            src/fortran/co2_2pump/bin/_smoke_run/stderr.log

@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  CARSFT:
     # Run on Linux; you can add macOS/windows later via a matrix.
     runs-on: ubuntu-latest
 
