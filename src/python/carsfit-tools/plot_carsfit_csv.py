@@ -37,6 +37,7 @@ def load_meta(meta_path: str) -> Dict[str, str]:
                     k, v = line.split(":", 1)
                     meta[k.strip().lower()] = v.strip()
     except FileNotFoundError:
+        # If the .meta file is missing, return an empty dict (metadata is optional)
         pass
     return meta
 
