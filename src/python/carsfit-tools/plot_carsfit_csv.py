@@ -116,7 +116,7 @@ def compute_residual(x1: np.ndarray, y1: np.ndarray, x2: np.ndarray, y2: np.ndar
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("csvs", nargs="+", help="One or more CSV files (from PLTCHI replacement)")
+    ap.add_argument("csvs", nargs="+", help="One or more CSV files from carsfit output")
     ap.add_argument("--out", help="Save figure to this path instead of showing it")
     args = ap.parse_args()
 
