@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-plot_pltchi_multi.py
+plot_carsfit_csv.py
 
 Usage:
-  python3 plot_pltchi_multi.py file1.csv [file2.csv ...] [--out fig.png]
+  python3 plot_carsfit_csv.py file1.csv [file2.csv ...] [--out fig.png]
 
 Behavior:
   - Plots each CSV as a line (auto colors).
