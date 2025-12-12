@@ -25,7 +25,10 @@ if ~isfield(opts,'timeout_sec')
 end
 
 % Prepare workdir and stage required input data
-wd = opts.workdir; if ~isfolder(wd), mkdir(wd); end
+wd = opts.workdir;
+if ~isfolder(wd), mkdir(wd); end
+wd = string(java.io.File(wd).getCanonicalPath());
+
 if isfolder(opts.data_dir)
     % copy data contents into workdir (shallow copy)
     copyfile(fullfile(opts.data_dir, '*'), wd);
@@ -41,12 +44,16 @@ else
     writelines(lines, script_path);
 end
 
+% Force absolute, canonical path for redirection
+script_path = string(java.io.File(script_path).getCanonicalPath());
+
 % Build command (platform-safe)
 exe = string(opts.exe);
+
 if ispc
-    cmd = sprintf('cmd /c "(cd /d %s) & \"%s\" < \"%s\""', wd, exe, script_path);
+    cmd = sprintf('cmd /c "cd /d "%s" && "%s" < "%s""', wd, exe, script_path);
 else
-    cmd = sprintf('bash -lc "cd %s && \"%s\" < \"%s\""', wd, exe, script_path);
+    cmd = sprintf('bash -c ''cd "%s" && "%s" < "%s"''', wd, exe, script_path);
 end
 
 t0 = datetime('now');
