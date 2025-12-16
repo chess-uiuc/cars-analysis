@@ -75,7 +75,7 @@ then try the following:
 
   - MAC: `brew install gcc`
   - Ubuntu Linux: `aptget install gcc`
-  - Windows: (Install GCC)
+  - Windows: (Add some instructions)
 
 1) Build the `carsft` executable from FORTRAN code
 
