@@ -75,12 +75,19 @@ then try the following:
 
   - MAC: `brew install gcc`
   - Ubuntu Linux: `aptget install gcc`
-  - Windows: (Add some instructions)
+  - Windows: ([Try this](https://www.google.com/search?q=how+to+install+gcc+on+windows&oq=how+to+install+gcc+on+windows))
 
 1) Build the `carsft` executable from FORTRAN code
 
+This command **builds** the executable:
+
 ```bash
-make -C src/fortran/co2_2pump -j
+make -C src/fortran/co2_2pump
+```
+
+Then this command runs some tests to make sure it "works":
+
+```bash
 tests/fortran/co2_2pump/smoke/run_smoke.sh
 ```
 
