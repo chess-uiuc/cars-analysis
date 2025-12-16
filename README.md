@@ -73,9 +73,11 @@ echo $FC
 If none of those commands indicate you have a FORTRAN compiler
 then try the following:
 
-  - MAC: `brew install gcc`
-  - Ubuntu Linux: `aptget install gcc`
+  - MAC: `brew install gcc` ([More details](https://www.google.com/search?q=install+gfortran+on+mac))
+  - Ubuntu Linux: `aptget install gcc` ([Other Linux](https://www.google.com/search?q=install+gfortran+on+linux))
   - Windows: ([Try this](https://www.google.com/search?q=how+to+install+gcc+on+windows&oq=how+to+install+gcc+on+windows))
+
+[Here's some more information about installing a FORTRAN compiler on different systems.](https://fortran-lang.org/learn/os_setup/install_gfortran/)
 
 1) Build the `carsft` executable from FORTRAN code
 
@@ -128,6 +130,9 @@ reads the meta data file for the axis labels, if it exists.
 ```bash
 python ../../../python/carsfit-tools/plot_carsfit_csv.py pltchi_0001.csv
 ```
+
+If you do not have `python` on your system, here is some info about how
+to install python on [Mac](https://www.google.com/search?q=install+python+on+mac), [Linux](https://www.google.com/search?q=install+python+on+linux), and [Windows](https://www.google.com/search?q=install+python+on+windows).
 
 ### How to use the Matlab interface to FORTRAN `carsft`
 
