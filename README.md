@@ -19,7 +19,10 @@ MATLAB & Fortran analysis tooling for cars data.
 - `tests/matlab/cfx` - Tests of the interface to Fortran carsfit (CO2/2pump)
 - `tests/fortran/co2_2pump` - Tests for the CO2/dual pump code
 
+------------------
+
 ## Using the CARS Analysis Suite
+
 
 ### Get the code:
 
@@ -32,6 +35,8 @@ cd ~/CHESS-CARS-ANALYSIS
 git clone https://github.com/chess-uiuc/cars-analysis
 cd cars-analysis
 ```
+
+-----------------------
 
 ### How to use the Matlab code
 
@@ -53,6 +58,8 @@ You can inspect, and change the `carsft` tests by looking in:
 
 You can inspect, and change `carsft` code by looking in:
 `src/matlab/carsft/src/*.m`
+
+--------------------------
 
 ### How to use the FORTRAN `carsfit_co2`
 
@@ -133,6 +140,8 @@ python ../../../python/carsfit-tools/plot_carsfit_csv.py pltchi_0001.csv
 
 If you do not have `python` on your system, here is some info about how
 to install python on [Mac](https://www.google.com/search?q=install+python+on+mac), [Linux](https://www.google.com/search?q=install+python+on+linux), and [Windows](https://www.google.com/search?q=install+python+on+windows).
+
+----------------------------------
 
 ### How to use the Matlab interface to FORTRAN `carsfit_co2`
 
