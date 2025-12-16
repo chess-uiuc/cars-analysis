@@ -56,6 +56,27 @@ add_one(41)  % -> 42
 
 ### How to use the FORTRAN `carsfit_co2`
 
+0) You need a FORTRAN compiler to build `carsfit_co2`
+
+If you do not have a FORTRAN compiler, you'll need to install
+one.  If you already have one, then one of these commands should
+tell you if you have a common one:
+
+```bash
+which gfortran
+which f90
+which f77
+which ifort
+echo $FC
+```
+
+If none of those commands indicate you have a FORTRAN compiler
+then try the following:
+
+  - MAC: `brew install gcc`
+  - Ubuntu Linux: `aptget install gcc`
+  - Windows: (Install GCC)
+
 1) Build the `carsft` executable from FORTRAN code
 
 ```bash
@@ -65,15 +86,40 @@ tests/fortran/co2_2pump/smoke/run_smoke.sh
 
 2) Run `carsft`:
 
+Examples of the required input files `cars.mol`, `cars.par`, `co2.mol`
+can be found in the `data` directory.  In this example, we copy that
+directory to the `testrun` directory as a demo.
+
 ```bash
 cd src/fortran/co2_2pump
-./bin/carsfit_co2
+cp -r data testrun
+cd testrun
+../bin/carsfit_co2
 ```
+
+If the run is successful, at least one dataset will be created:
+
+```bash
+ls -l pltchi_*.*
+```
+
+You should see something like this:
+
+```
+-rw-r--r--  1 mtcampbe  staff   220006 Dec 16 10:18 pltchi_0001.csv
+-rw-r--r--  1 mtcampbe  staff       89 Dec 16 10:18 pltchi_0001.meta
+```
+
+The data to plot is in the CSV file, and a human-readable meta data
+file explains what data can be found in the CSV.
 
 3) Plot results:
 
+A python utility is provided to plot the resulting data. It automatically
+reads the meta data file for the axis labels, if it exists.
+
 ```bash
-./plot_carsft_results.py something.csv
+python ../../../python/carsfit-tools/plot_carsfit_csv.py pltchi_0001.csv
 ```
 
 ### How to use the Matlab interface to FORTRAN `carsft`
