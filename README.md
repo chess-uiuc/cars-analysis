@@ -145,6 +145,14 @@ to install python on [Mac](https://www.google.com/search?q=install+python+on+mac
 
 ### How to use the Matlab interface to FORTRAN `carsfit_co2`
 
+The Matlab interface to the FORTRAN code is called `cfx`. To use it, you must first build
+or obtain the binary `carsfit_co2` executable for your particular platform. If you have a
+FORTRAN compiler, the instructions above can help you build it.  Otherwise, you must obtain
+an executable from someone that already has one.
+
+The following steps should get you up and running with the Matlab interface to the FORTRAN
+code.
+
 1) Build or obtain the binary (See HOWTO build FORTRAN `carsfit_co2` above):
 
 The build process (or an executable you otherwise obtain) must be located at and named:
@@ -156,6 +164,9 @@ The build process (or an executable you otherwise obtain) must be located at and
 ```matlab
 % If you didnt already do this, add the matlab path
 addpath(genpath('src/matlab'));
+
+% Optional: run the cfx+ tests
+runtests('tests/matlab/cfx')
 
 % Run carsfit_co2 from MATLAB (8 Enters, then N, N)
 seq = [repmat("",8,1); "N"; "N"];
