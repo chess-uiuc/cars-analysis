@@ -45,14 +45,14 @@ cd ~/CHESS-CARS-ANALYSIS/cars-analysis
 addpath(genpath('src/matlab'))
 
 % Run the full MATLAB test suite
-runtests('tests/matlab')
-
-% Or just test the seed example:
-runtests('tests/matlab/seed')
-
-% Run the seed example by hand:
-add_one(41)  % -> 42
+runtests('tests/matlab/carsft')
 ```
+
+You can inspect, and change the `carsft` tests by looking in:
+`tests/matlab/carsft/*.m`
+
+You can inspect, and change `carsft` code by looking in:
+`src/matlab/carsft/src/*.m`
 
 ### How to use the FORTRAN `carsfit_co2`
 
@@ -79,7 +79,7 @@ then try the following:
 
 [Here's some more information about installing a FORTRAN compiler on different systems.](https://fortran-lang.org/learn/os_setup/install_gfortran/)
 
-1) Build the `carsft` executable from FORTRAN code
+1) Build the `carsfit_co2` executable from FORTRAN code
 
 This command **builds** the executable:
 
@@ -134,10 +134,13 @@ python ../../../python/carsfit-tools/plot_carsfit_csv.py pltchi_0001.csv
 If you do not have `python` on your system, here is some info about how
 to install python on [Mac](https://www.google.com/search?q=install+python+on+mac), [Linux](https://www.google.com/search?q=install+python+on+linux), and [Windows](https://www.google.com/search?q=install+python+on+windows).
 
-### How to use the Matlab interface to FORTRAN `carsft`
+### How to use the Matlab interface to FORTRAN `carsfit_co2`
 
-1) Build or obtain the binary (See HOWTO build FORTRAN `carsft` above):
-   `src/fortran/co2_2pump/bin/carsfit_co2`
+1) Build or obtain the binary (See HOWTO build FORTRAN `carsfit_co2` above):
+
+The build process (or an executable you otherwise obtain) must be located at and named:
+
+`src/fortran/co2_2pump/bin/carsfit_co2`
 
 2) In MATLAB:
 
