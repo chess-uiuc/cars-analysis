@@ -346,8 +346,8 @@ C        nthe    : number points in waven
 C______________________________________________________________________
 C
       PARAMETER (NJ = 130, NF = 30, NV = 6, NM = 4, NTM =
-     1   32*16384, NW = 1000, NV45 = 10, NP = 30, NPP = 31,
-     2   NTM1 = NTM/2)
+     1     128*16384, NW = 1000, NV45 = 10, NP = 30, NPP = 31,
+     2     NTM1 = NTM/2)
       DIMENSION DATPL(*), VARFIT(NF, *), CHNORM(*), IDGAS(*),
      1   WPL(*), CHIREF(*), CHIT2(*), VARRUN(*), WAVEN(*),
      2   WDAT(*), PARPR(*)
@@ -499,7 +499,7 @@ C        nthe   : number points in arrays
 C        waven  : wavenumbers associated with chi arrays
 C______________________________________________________________________
 C
-      PARAMETER (NJ = 130, NM = 4, NTM = 32*16384, NV = 6, NW =
+      PARAMETER (NJ = 130, NM = 4, NTM = 128*16384, NV = 6, NW =
      1   1000, NV45 = 10, NR = 17, NF = 30, NTM1 = NTM/2)
 
       save nt, wtran, gamma, nq, maxq, maxv4, maxv5, wbig,
@@ -825,7 +825,7 @@ C       chit2  :  absolute value of susceptibility squared
 C______________________________________________________________________
 C
       PARAMETER (NJ = 130, NM = 4, NV = 6, NW = 1000, NV45 =
-     1   10, NTM=32*16384)
+     1   10, NTM=128*16384)
       DIMENSION AMPL(NW, NM, *), DELV4(0:*), DELV5(0:*), GAMMA(NW, NM,
      1   *), IDGAS(*), NT(NM, *), NQ(NW, 4, NM, *), MAXQ(2, *),
      2   MAXV5(0:NV45), PARKOS(*), PARPR(*), POP(0:NV, 0:NJ,
@@ -1096,7 +1096,7 @@ C       nthe1 - number of entries in wavtmp
 C       adaptv - logical flag to do adaptive gridding
 C______________________________________________________________________
 C
-      PARAMETER (NW = 1000, NM = 4, NSTART = 2000, NTM = 32*16384,
+      PARAMETER (NW = 1000, NM = 4, NSTART = 2000, NTM = 128*16384,
      1   NTM1 = NTM/2)
       DIMENSION NT(NM, 2), WAVTMP(*), WTRAN(NW, NM, *), GAMMA(NW, NM, *)
       DOUBLE PRECISION WAVTMP
@@ -1178,7 +1178,7 @@ C______________________________________________________________________
 C
 C     handles convolutions for single or dual pump frequencies.
 C     
-      PARAMETER (NTM = 32*16384)
+      PARAMETER (NTM = 128*16384)
 
       DIMENSION CHIIM(NTM, *), CHIRL(NTM, *), CHIT2(*), CCONV2(*),
      1   TINSTR(*)
@@ -1309,7 +1309,7 @@ C    output parameters:
 C      cconv2 - square of convolved chi
 C______________________________________________________________________
 C
-      PARAMETER (NTM = 32*16384)
+      PARAMETER (NTM = 128*16384)
 
       DIMENSION CHIIM(NTM, *), CHIRL(NTM, *), CHIT2(*), CCONV2(*),
      1   TINSTR(*)
@@ -2338,7 +2338,7 @@ C  local variables: (save all local variables to save time
 C  on subsequent calls when fitting)
 C
       SAVE
-      PARAMETER (NV = 6, NJ = 130, NTM = 32*16384, NV45 = 10,
+      PARAMETER (NV = 6, NJ = 130, NTM = 128*16384, NV45 = 10,
      1   NTM1 = NTM/2)
       DIMENSION DELV4(0:NV45), DELV5(0:NV45), CHTMPR(NTM1, 2),
      1   CHTMPI(NTM1, 2), CHTMPSQ(NTM1), GAMMA(NW, NM, 2),
@@ -2663,7 +2663,7 @@ C  named FUNK in STEPIT documentation
 C______________________________________________________________________
 C
       PARAMETER (NW = 1000, NM = 4, ND = 5000, NF = 30, NTM =
-     1   32*16384, NP = 30, NPP = 31, NTM1 = NTM/2)
+     1     128*16384, NP = 30, NPP = 31, NTM1 = NTM/2)
       SAVE AMPL, CHNORM, WPL, CHIT2
       LOGICAL DBLCON, GAUSPR, LOFFQ(2), USEREF, LSRCNV, TWOPMP, SPCPRB,
      1   ADAPTV, SHOTST
@@ -4212,7 +4212,7 @@ C       tinstr - hartley transformed instrument function at uniformly
 C       spaced wavenumbers over double interval (2*nthe points)
 C______________________________________________________________________
 C
-      PARAMETER (NTM = 32*16384, NTM1 = NTM/2)
+      PARAMETER (NTM = 128*16384, NTM1 = NTM/2)
       DIMENSION TINSTR(*)
 C
 C  local variables
@@ -4630,7 +4630,7 @@ C  number points necessary to resolve smallest feature
 C  uses next power of 2 above nline
 C______________________________________________________________________
 C
-      PARAMETER (NTM = 32*16384)
+      PARAMETER (NTM = 128*16384)
 C
 C---  nmax = log2(ntm)
 C
@@ -5317,7 +5317,7 @@ C       tinstr - hartley transformed instrument function at uniformly
 C       spaced wavenumbers over double interval (2*nthe points)
 C______________________________________________________________________
 C
-      PARAMETER (NTM = 32*16384, NTM1 = NTM/2)
+      PARAMETER (NTM = 128*16384, NTM1 = NTM/2)
       DIMENSION TINSTR(*)
       CHARACTER* (*)PRBFIL
 C
@@ -5922,7 +5922,7 @@ C  interpolates theoretical susceptibilities on adaptive grid to
 C  wavenumber array waven
 C______________________________________________________________________
 C
-      PARAMETER (NTM = 32*16384, NTM1 = NTM/2)
+      PARAMETER (NTM = 128*16384, NTM1 = NTM/2)
       DIMENSION CHTMPR(NTM1, *), CHTMPI(NTM1, *), CHTMPSQ(NTM1),
      1    WAVTMP(*), WAVEN(*), CHIIM(NTM, *), CHIRL(NTM, *), CHIT2(*)
       DOUBLE PRECISION WAVEN, WAVTMP
@@ -6021,7 +6021,7 @@ C
 C
 C  local variables:
 C
-      PARAMETER (ND = 5000, NM = 4, NV45 = 10, NTM = 32*16384)
+      PARAMETER (ND = 5000, NM = 4, NV45 = 10, NTM = 128*16384)
       DIMENSION WPL(ND), CHICON(ND), CHIREF(ND), CHNORM(ND),
      1   DUMDAT(ND)
       DIMENSION DELV4(0:NV45), DELV5(0:NV45), IDGAS(NM),
@@ -6183,7 +6183,7 @@ C
 C  local variables: (save variables read from file in case
 C    same file is chosen again)
 C
-      PARAMETER (NV45 = 10, ND = 5000, NM = 4, NTM = 32*16384)
+      PARAMETER (NV45 = 10, ND = 5000, NM = 4, NTM = 128*16384)
 
       SAVE
 
@@ -6323,7 +6323,7 @@ C
 C  local variables:
 C
       PARAMETER (NJ = 130, NV = 6, NM = 4, NW = 1000, NV45 =
-     1   10, NTM = 32*16384, ND = 5000)
+     1   10, NTM = 128*16384, ND = 5000)
       DIMENSION IDGAS(NM), DELV4(0:NV45), DELV5(0:NV45),
      1   PARPR(NM), AMPL(NW, NM, 2), WTRAN(NW, NM, 2), GAMMA(NW,
      2   NM, 2), NQ(NW, 4, NM, 2), MAXQ(2, NM), MAXV5(0:NV45),
@@ -6428,7 +6428,7 @@ C
 C
 C  local variables:
 C
-      PARAMETER (ND = 5000, NM = 4, NV45 = 10, NTM = 32*16384)
+      PARAMETER (ND = 5000, NM = 4, NV45 = 10, NTM = 128*16384)
       DIMENSION IDGAS(NM), PARPR(NM), CHIDAT(ND), CHIREF(ND),
      1   DELV4(0:NV45), DELV5(0:NV45), PARKOS(4), WDAT(ND)
       CHARACTER ITITLE*80
@@ -6547,7 +6547,7 @@ C
 C
 C---  local variables:
 C
-      PARAMETER (NM = 4, NV45 = 10, NTM = 32*16384, ND = 5000)
+      PARAMETER (NM = 4, NV45 = 10, NTM = 128*16384, ND = 5000)
       DIMENSION WPL(ND), CHICON(ND), CHIREF(ND), CHNORM(ND),
      1   DUMDAT(ND)
       DIMENSION IDGAS(NM), PARPR(NM), DELV4(0:NV45),
@@ -6650,7 +6650,7 @@ C
 C
 C  local variables:
 C
-      PARAMETER (ND = 5000, NM = 4, NV45 = 10, NTM = 32*16384)
+      PARAMETER (ND = 5000, NM = 4, NV45 = 10, NTM = 128*16384)
       DIMENSION WPL(ND), CHICON(ND), DUMDAT(ND), RLSPC(ND), SQRSPC(ND)
       DIMENSION DELV4(0:NV45), DELV5(0:NV45), IDGAS(NM),
      1   PARKOS(4), PARPR(NM)

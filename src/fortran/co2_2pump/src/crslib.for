@@ -27,7 +27,7 @@ C
 C--- dimensioned for maximum value of n = 2**18 = 262144.
 C    Note: n must be greater than or equal to 2*NTM in carsfit.for.
 C
-      PARAMETER (NP2 = 18, NMAX = 2**NP2, ND = NMAX/4)
+      PARAMETER (NP2 = 24, NMAX = 2**NP2, ND = NMAX/4)
       DIMENSION T(ND), S(ND), M(NP2)
 C
       IF (N .GT. NMAX) THEN
